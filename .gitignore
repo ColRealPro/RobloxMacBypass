@@ -1,0 +1,9 @@
+# Build files
+dist
+build
+
+# Program downloads
+roblox.dmg
+
+# MacOS
+.DS_Store
