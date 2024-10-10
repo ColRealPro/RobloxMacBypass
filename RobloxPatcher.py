@@ -5,7 +5,7 @@ import os
 import dmglib
 import subprocess
 import time
-import psutil
+# import psutil
 
 print("Downloading Roblox installer... This may take a minute.")
 response = requests.get("https://www.roblox.com/download/client", headers={
@@ -32,13 +32,21 @@ while True:
 
 process.kill()
 
-print("Patching Roblox...")
+print("Patching Roblox... this will take a few seconds.")
 
 home_dir = os.path.expanduser("~")
 roblox_dir = home_dir + "/Applications/Roblox.app/Contents/MacOS"
+app_dir = home_dir + "/Applications/Roblox.app"
 
 time.sleep(0.2)
 
+dummy_name = "COPYCOPYCOPYTESTCOPY"
+
+os.rename(app_dir, home_dir + f"/Applications/{dummy_name}.app")
 os.rename(roblox_dir + "/RobloxPlayer", roblox_dir + "/robloxPlayer")
+
+time.sleep(12)
+
+os.rename(home_dir + f"/Applications/{dummy_name}.app", app_dir)
 
 print("Roblox has been successfully patched! You can now open Roblox on your dock.")
